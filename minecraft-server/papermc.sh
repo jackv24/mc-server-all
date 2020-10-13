@@ -23,9 +23,16 @@ fi
 mkdir -p plugins
 cd plugins
 
+# Download Geyser
 if [ ! -e Geyser-Spigot.jar ]
   then
     wget https://ci.nukkitx.com/job/GeyserMC/job/Geyser/job/master/lastSuccessfulBuild/artifact/bootstrap/spigot/target/Geyser-Spigot.jar -O Geyser-Spigot.jar
+fi
+
+# Download Floodgate
+if [ ! -e floodgate-bukkit.jar ]
+  then
+    wget https://ci.nukkitx.com/job/GeyserMC/job/Floodgate/job/development/lastSuccessfulBuild/artifact/bukkit/target/floodgate-bukkit.jar -O floodgate-bukkit.jar
 fi
 
 # Plugin downloads finished
