@@ -13,12 +13,14 @@ services:
     stdin_open: true
     tty: true
   dns:
-    restart: always
-    image: strm/dnsmasq
+    restart: unless-stopped
+    image: jpillora/dnsmasq
+    ports:
+      - 53:53/udp
     volumes:
       - ${PWD}/dnsmasq.conf:/etc/dnsmasq.conf
-    ports:
-      - "53:53/udp"
     cap_add:
       - NET_ADMIN
-    network_mode: "host"
+    environment: 
+      - HTTP_USER=foo
+      - HTTP_PASS=bar
