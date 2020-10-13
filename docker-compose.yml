@@ -1,0 +1,13 @@
+version: "3.8"
+services:
+  mc:
+    build: "minecraft-server"
+    ports:
+      - 25565:25565/tcp
+      - 19132:19132/udp
+    volumes:
+      - ./volumes/mc:/papermc
+    environment:
+      - MC_VERSION=1.16.3
+    stdin_open: true
+    tty: true
