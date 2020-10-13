@@ -1,13 +1,24 @@
 version: "3.8"
 services:
   mc:
+    restart: unless-stopped
     build: "minecraft-server"
     ports:
       - 25565:25565/tcp
       - 19132:19132/udp
     volumes:
-      - ./volumes/mc:/papermc
+      - ${PWD}/volumes/mc:/papermc
     environment:
       - MC_VERSION=1.16.3
     stdin_open: true
     tty: true
+  dns:
+    restart: always
+    image: strm/dnsmasq
+    volumes:
+      - ${PWD}/dnsmasq.conf:/etc/dnsmasq.conf
+    ports:
+      - "53:53/udp"
+    cap_add:
+      - NET_ADMIN
+    network_mode: "host"
