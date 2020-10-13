@@ -17,6 +17,7 @@ services:
     image: jpillora/dnsmasq
     ports:
       - 53:53/udp
+      - 5380:8080
     volumes:
       - ${PWD}/dnsmasq.conf:/etc/dnsmasq.conf
     cap_add:
