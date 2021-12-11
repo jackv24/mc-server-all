@@ -1,11 +1,11 @@
 # Copied from https://hub.docker.com/r/phyremaster/papermc/dockerfile
 
 # JRE base
-FROM openjdk:11.0-jre-slim
+FROM openjdk:17.0.1-slim-buster
 
 # Environment variables
-ENV MC_VERSION="1.16.1" \
-    PAPER_BUILD="latest" \
+ENV MC_VERSION="1.17.1" \
+    PAPER_BUILD="399" \
     MC_RAM="1G" \
     JAVA_OPTS=""
 
