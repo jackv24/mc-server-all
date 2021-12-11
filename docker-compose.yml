@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   mc:
-    restart: unless-stopped
+    restart: "no"
     build: "minecraft-server"
     ports:
       - 25565:25565/tcp
@@ -9,20 +9,8 @@ services:
     volumes:
       - ${PWD}/volumes/mc:/papermc
     environment:
-      - MC_VERSION=1.16.3
+      - MC_VERSION=1.18
+      - PAPER_BUILD=66
       - MC_RAM=1G
     stdin_open: true
     tty: true
-  dns:
-    restart: unless-stopped
-    image: jpillora/dnsmasq
-    ports:
-      - 53:53/udp
-      - 5380:8080
-    volumes:
-      - ${PWD}/dnsmasq.conf:/etc/dnsmasq.conf
-    cap_add:
-      - NET_ADMIN
-    environment: 
-      - HTTP_USER=foo
-      - HTTP_PASS=bar

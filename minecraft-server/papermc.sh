@@ -6,12 +6,14 @@
 mkdir -p papermc
 cd papermc
 
-JAR_NAME=papermc-${MC_VERSION}-${PAPER_BUILD}
+JAR_NAME=paper-${MC_VERSION}-${PAPER_BUILD}
 
 # Perform initial setup
 if [ ! -e ${JAR_NAME}.jar ] || [ ${PAPER_BUILD} = latest ]
   then
-    wget https://papermc.io/api/v1/paper/${MC_VERSION}/${PAPER_BUILD}/download -O ${JAR_NAME}.jar
+    #wget https://papermc.io/api/v2/projects/paper/versions/1.17.1/builds/399/downloads/paper-1.17.1-399.jar
+    wget https://papermc.io/api/v2/projects/paper/versions/${MC_VERSION}/builds/${PAPER_BUILD}/downloads/${JAR_NAME}.jar -O ${JAR_NAME}.jar
+    #wget https://papermc.io/api/v1/paper/${MC_VERSION}/${PAPER_BUILD}/download -O ${JAR_NAME}.jar
     if [ ! -e eula.txt ]
     then
       java -jar ${JAR_NAME}.jar
